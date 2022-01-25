@@ -1,0 +1,7 @@
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Threads\bin\Debug\Threads.exe.config
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Threads\bin\Debug\Threads.exe
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Threads\bin\Debug\Threads.pdb
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Threads\obj\Debug\Threads.csproj.AssemblyReference.cache
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Threads\obj\Debug\Threads.csproj.CoreCompileInputs.cache
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Threads\obj\Debug\Threads.exe
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Threads\obj\Debug\Threads.pdb

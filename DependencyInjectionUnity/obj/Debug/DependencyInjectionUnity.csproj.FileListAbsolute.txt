@@ -1,0 +1,15 @@
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\bin\Debug\DependencyInjectionUnity.exe.config
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\bin\Debug\DependencyInjectionUnity.exe
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\bin\Debug\DependencyInjectionUnity.pdb
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\bin\Debug\Unity.Abstractions.dll
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\bin\Debug\Unity.Container.dll
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\bin\Debug\Unity.Abstractions.pdb
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\bin\Debug\Unity.Container.pdb
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\obj\Debug\DependencyInjectionUnity.csproj.AssemblyReference.cache
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\obj\Debug\DependencyInjectionUnity.csproj.CoreCompileInputs.cache
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\obj\Debug\DependencyInjectionUnity.csproj.CopyComplete
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\obj\Debug\DependencyInjectionUnity.exe
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionUnity\obj\Debug\DependencyInjectionUnity.pdb

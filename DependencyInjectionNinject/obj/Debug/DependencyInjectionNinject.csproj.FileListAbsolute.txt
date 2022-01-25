@@ -1,0 +1,10 @@
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionNinject\bin\Debug\DependencyInjectionNinject.exe.config
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionNinject\bin\Debug\DependencyInjectionNinject.exe
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionNinject\bin\Debug\DependencyInjectionNinject.pdb
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionNinject\bin\Debug\Ninject.dll
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionNinject\bin\Debug\Ninject.xml
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionNinject\obj\Debug\DependencyInjectionNinject.csproj.AssemblyReference.cache
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionNinject\obj\Debug\DependencyInjectionNinject.csproj.CoreCompileInputs.cache
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionNinject\obj\Debug\DependencyInjectionNinject.csproj.CopyComplete
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionNinject\obj\Debug\DependencyInjectionNinject.exe
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\DependencyInjectionNinject\obj\Debug\DependencyInjectionNinject.pdb

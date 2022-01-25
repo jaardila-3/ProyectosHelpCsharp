@@ -1,0 +1,7 @@
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Parámetros y palabras reservadas\bin\Debug\Parámetros y palabras reservadas.exe.config
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Parámetros y palabras reservadas\bin\Debug\Parámetros y palabras reservadas.exe
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Parámetros y palabras reservadas\bin\Debug\Parámetros y palabras reservadas.pdb
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Parámetros y palabras reservadas\obj\Debug\Parámetros y palabras reservadas.csproj.AssemblyReference.cache
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Parámetros y palabras reservadas\obj\Debug\Parámetros y palabras reservadas.csproj.CoreCompileInputs.cache
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Parámetros y palabras reservadas\obj\Debug\Parámetros y palabras reservadas.exe
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\Parámetros y palabras reservadas\obj\Debug\Parámetros y palabras reservadas.pdb

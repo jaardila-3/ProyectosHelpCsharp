@@ -1,0 +1,14 @@
+C:\Users\jorge.ardilar\source\repos\ConsoleApp1\AsParallel-PLINQ\bin\Debug\AsParallel-PLINQ.exe.config
+C:\Users\jorge.ardilar\source\repos\ConsoleApp1\AsParallel-PLINQ\bin\Debug\AsParallel-PLINQ.exe
+C:\Users\jorge.ardilar\source\repos\ConsoleApp1\AsParallel-PLINQ\bin\Debug\AsParallel-PLINQ.pdb
+C:\Users\jorge.ardilar\source\repos\ConsoleApp1\AsParallel-PLINQ\obj\Debug\AsParallel-PLINQ.csproj.AssemblyReference.cache
+C:\Users\jorge.ardilar\source\repos\ConsoleApp1\AsParallel-PLINQ\obj\Debug\AsParallel-PLINQ.csproj.CoreCompileInputs.cache
+C:\Users\jorge.ardilar\source\repos\ConsoleApp1\AsParallel-PLINQ\obj\Debug\AsParallel-PLINQ.exe
+C:\Users\jorge.ardilar\source\repos\ConsoleApp1\AsParallel-PLINQ\obj\Debug\AsParallel-PLINQ.pdb
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\AsParallel-PLINQ\bin\Debug\AsParallel-PLINQ.exe.config
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\AsParallel-PLINQ\bin\Debug\AsParallel-PLINQ.exe
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\AsParallel-PLINQ\bin\Debug\AsParallel-PLINQ.pdb
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\AsParallel-PLINQ\obj\Debug\AsParallel-PLINQ.csproj.AssemblyReference.cache
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\AsParallel-PLINQ\obj\Debug\AsParallel-PLINQ.csproj.CoreCompileInputs.cache
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\AsParallel-PLINQ\obj\Debug\AsParallel-PLINQ.exe
+C:\Users\jorge.ardilar\source\repos\ProyectosHelpCsharp\AsParallel-PLINQ\obj\Debug\AsParallel-PLINQ.pdb
