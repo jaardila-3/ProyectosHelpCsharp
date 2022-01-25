@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    string saludo = "Hola Devs";
+}
+
+<h2>Index</h2>
+
+<a href="@Url.Action("Index", "Home", new { name = "Jorge"})">one parameter</a>
+
+<a href="@Url.Action("Index", "Home", new { name = "Jorge", lastname = "Ardila" })">two parameters</a>
+
+<a href="#" type="button" id="idbtn">botón three parameters</a>
+
+<script>
+    let nombre = "Jorge";
+    let apellido = "Ardila";
+    let url = '@Url.Action("Index", "Home")' + "?name=" + nombre + "&lastname=" + apellido + "&age=" + 22;
+    //agregamos la url al atributo href
+    $('#btnFechas').attr("href", url);
+</script>
+
+
+
+<form name="f1">
+    <select class="ml-5" name=pais onchange="cambia_unidad()">
+        <option value="@saludo" data-Sigla_unidad="@saludo" data-Región_unidad="@saludo">saludo </option>
+    </select>
+
+</form>
+
+<script>
+    function cambia_unidad() {
+        var pais = document.f1.pais[document.f1.pais.selectedIndex].value; //obtiene el valor del atributo value
+        var Sigla_unidad = document.f1.pais[document.f1.pais.selectedIndex].getAttribute("data-Sigla_unidad");  //obtiene el data-*
+        //otra forma de obtener el data-* es con dataset pero debe utilizar notacion camelcase
+        Sigla_unidad = document.f1.pais[document.f1.pais.selectedIndex].dataset.sigla_unidad;
+        let Región_unidad = (document.f1.pais[document.f1.pais.selectedIndex].dataset.región_unidad == "") ? 0 : parseInt(document.f1.pais[document.f1.pais.selectedIndex].dataset.región_unidad);
+    }
+</script>
+
+
+
+<script>
+    //#region configurar las tablas en español de la plantilla material pro: en el archivo tablaxxx.init.js hacer la siguiente configuracion:
+    $('#iddelatabla').DataTable({
+        "order": [
+            [0, "desc"]
+        ],
+        "language": {
+            "decimal": "",
+            "emptyTable": "No hay información",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+            "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Entradas",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "sSearch": "Buscar:",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior",
+            }
+        },
+    });
+    //#endregion
+
+
+    //#region PRELOAD
+    //plugin de los preload: https://gasparesganga.com/labs/jquery-loading-overlay/
+    //CDN: https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js
+    //muestra el preload
+    function LoadingOverlayShow(id) {
+        $(id).LoadingOverlay("show", {
+            color: "rgba(255, 255, 255, 0.5)",
+            image: "/Content/loading.gif", //ruta de la imagen
+            imageResizeFactor: 0.6, //si la imagen es muy grande la recorta a ese tamaño
+            //imageAnimation: "1.5s fadein",
+        });
+    }
+    // esconde el preload
+    function LoadingOverlayHide(id) {
+        $(id).LoadingOverlay("hide");
+    }
+    //tambien para peticiones ajax ya configurado
+    $(document).ajaxStart(function () {
+        $.LoadingOverlay("show");
+    });
+    $(document).ajaxStop(function () {
+        $.LoadingOverlay("hide");
+    });
+    //#endregion
+
+    //#region AJAX CON PRELOAD
+    //para un formulario <form>
+    $("#frmProyecto").submit(function (event) {
+        event.preventDefault(); //prevent default action, previene el reload
+
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = $(this).serializeArray(); //serializa los datos del formulario en un objeto, se puede utilizar como una entidad o dto
+
+        LoadingOverlayShow("#frmProyecto"); //preload, 
+        $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data
+        }).done(function (response) {
+            LoadingOverlayHide("#frmProyecto"); //esconde el preload, 
+            if (response.ok) {
+                alert("Proyecto creado correctamente.");
+                window.location = response.toRedirect; //en conrolador: return Json(new { ok = true, toRedirect = Url.Action("Index") }, JsonRequestBehavior.AllowGet);
+            }
+            else {
+                alert(response.msg);
+            }
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            LoadingOverlayHide("#frmProyecto");//esconde el preload, 
+            //object jqXHR: es un objeto jqXHR que contiene todos los datos de la solicitud Ajax realizada,
+            //    incluyendo la propiedad jqXHR.status que contiene, entre otros posibles, el código de estado HTTP de la respuesta.
+            //string textStatus: texto que describe el tipo de error, que puede ser, además de null,
+            //        «abort», «timeout», «No Transport» o «parseerror».
+            //string errorThrown: si hay un error HTTP, errorThrown contiene el texto de la cabecera HTTP de estado.
+            //    Por ejemplo, para un error HTTP 404, errorThrown es «Not found»; para error un HTTP 500 es «Internal Server Error».
+        });
+    });
+
+
+
+//#endregion
+</script>
