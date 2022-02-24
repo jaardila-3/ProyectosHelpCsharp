@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="URS_REHUModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FUNCIONARIO_NOVEDAD">
+          <Key>
+            <PropertyRef Name="FUNCIONARIO_NOVEDAD_ID" />
+          </Key>
+          <Property Name="FUNCIONARIO_NOVEDAD_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDENTIFICACION&#xD;&#xA;IDENTIFICACION&#xD;&#xA;IDENTIFICACION]" Type="int" Nullable="false" />
+          <Property Name="CONSECUTIVO" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NOV_UNIDADES_TRASLADOS">
+          <Key>
+            <PropertyRef Name="ID_UNIDAD_TRASLADO" />
+          </Key>
+          <Property Name="ID_UNIDAD_TRASLADO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PROYECTO_FUNCIONARIO_ID" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OBSERVACION_FUNCIONARIO">
+          <Key>
+            <PropertyRef Name="OBSERVACION_FUNCIONARIO_ID" />
+          </Key>
+          <Property Name="OBSERVACION_FUNCIONARIO_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FUNCIONARIO_NOVEDAD_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OBSERVACION" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'URS_REHU.dbo.OBSERVACION_PROYECTO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="OBSERVACION_PROYECTO">
+          <Key>
+            <PropertyRef Name="OBSERVACION_PROYECTO_ID" />
+            <PropertyRef Name="PROYECTO_NOVEDAD_ID" />
+          </Key>
+          <Property Name="OBSERVACION_PROYECTO_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PROYECTO_NOVEDAD_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OBSERVACION" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PROYECTO_FUNCIONARIO">
+          <Key>
+            <PropertyRef Name="PROYECTO_FUNCIONARIO_ID" />
+          </Key>
+          <Property Name="PROYECTO_FUNCIONARIO_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PROYECTO_NOVEDAD_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FUNCIONARIO_NOVEDAD_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_CLASE_NOVEDAD" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROYECTO_NOVEDAD">
+          <Key>
+            <PropertyRef Name="PROYECTO_NOVEDAD_ID" />
+          </Key>
+          <Property Name="PROYECTO_NOVEDAD_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NUMERO_PROYECTO" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__NOV_UNIDA__PROYE__3C69FB99">
+          <End Role="PROYECTO_FUNCIONARIO" Type="Self.PROYECTO_FUNCIONARIO" Multiplicity="1" />
+          <End Role="NOV_UNIDADES_TRASLADOS" Type="Self.NOV_UNIDADES_TRASLADOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROYECTO_FUNCIONARIO">
+              <PropertyRef Name="PROYECTO_FUNCIONARIO_ID" />
+            </Principal>
+            <Dependent Role="NOV_UNIDADES_TRASLADOS">
+              <PropertyRef Name="PROYECTO_FUNCIONARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OBSERVACI__FUNCI__38996AB5">
+          <End Role="FUNCIONARIO_NOVEDAD" Type="Self.FUNCIONARIO_NOVEDAD" Multiplicity="1" />
+          <End Role="OBSERVACION_FUNCIONARIO" Type="Self.OBSERVACION_FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FUNCIONARIO_NOVEDAD">
+              <PropertyRef Name="FUNCIONARIO_NOVEDAD_ID" />
+            </Principal>
+            <Dependent Role="OBSERVACION_FUNCIONARIO">
+              <PropertyRef Name="FUNCIONARIO_NOVEDAD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OBSERVACI__PROYE__3B75D760">
+          <End Role="PROYECTO_NOVEDAD" Type="Self.PROYECTO_NOVEDAD" Multiplicity="1" />
+          <End Role="OBSERVACION_PROYECTO" Type="Self.OBSERVACION_PROYECTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROYECTO_NOVEDAD">
+              <PropertyRef Name="PROYECTO_NOVEDAD_ID" />
+            </Principal>
+            <Dependent Role="OBSERVACION_PROYECTO">
+              <PropertyRef Name="PROYECTO_NOVEDAD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROYECTO___FUNCI__398D8EEE">
+          <End Role="FUNCIONARIO_NOVEDAD" Type="Self.FUNCIONARIO_NOVEDAD" Multiplicity="1" />
+          <End Role="PROYECTO_FUNCIONARIO" Type="Self.PROYECTO_FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FUNCIONARIO_NOVEDAD">
+              <PropertyRef Name="FUNCIONARIO_NOVEDAD_ID" />
+            </Principal>
+            <Dependent Role="PROYECTO_FUNCIONARIO">
+              <PropertyRef Name="FUNCIONARIO_NOVEDAD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROYECTO___PROYE__3A81B327">
+          <End Role="PROYECTO_NOVEDAD" Type="Self.PROYECTO_NOVEDAD" Multiplicity="1" />
+          <End Role="PROYECTO_FUNCIONARIO" Type="Self.PROYECTO_FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROYECTO_NOVEDAD">
+              <PropertyRef Name="PROYECTO_NOVEDAD_ID" />
+            </Principal>
+            <Dependent Role="PROYECTO_FUNCIONARIO">
+              <PropertyRef Name="PROYECTO_NOVEDAD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROYECTO_FUNCIONARIO_PROYECTO_FUNCIONARIO">
+          <End Role="PROYECTO_FUNCIONARIO" Type="Self.PROYECTO_FUNCIONARIO" Multiplicity="1" />
+          <End Role="PROYECTO_FUNCIONARIO1" Type="Self.PROYECTO_FUNCIONARIO" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PROYECTO_FUNCIONARIO">
+              <PropertyRef Name="PROYECTO_FUNCIONARIO_ID" />
+            </Principal>
+            <Dependent Role="PROYECTO_FUNCIONARIO1">
+              <PropertyRef Name="PROYECTO_FUNCIONARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="URS_REHUModelStoreContainer">
+          <EntitySet Name="FUNCIONARIO_NOVEDAD" EntityType="Self.FUNCIONARIO_NOVEDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NOV_UNIDADES_TRASLADOS" EntityType="Self.NOV_UNIDADES_TRASLADOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OBSERVACION_FUNCIONARIO" EntityType="Self.OBSERVACION_FUNCIONARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROYECTO_FUNCIONARIO" EntityType="Self.PROYECTO_FUNCIONARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROYECTO_NOVEDAD" EntityType="Self.PROYECTO_NOVEDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OBSERVACION_PROYECTO" EntityType="Self.OBSERVACION_PROYECTO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OBSERVACION_PROYECTO].[OBSERVACION_PROYECTO_ID] AS [OBSERVACION_PROYECTO_ID], 
+    [OBSERVACION_PROYECTO].[PROYECTO_NOVEDAD_ID] AS [PROYECTO_NOVEDAD_ID], 
+    [OBSERVACION_PROYECTO].[OBSERVACION] AS [OBSERVACION]
+    FROM [dbo].[OBSERVACION_PROYECTO] AS [OBSERVACION_PROYECTO]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__NOV_UNIDA__PROYE__3C69FB99" Association="Self.FK__NOV_UNIDA__PROYE__3C69FB99">
+            <End Role="PROYECTO_FUNCIONARIO" EntitySet="PROYECTO_FUNCIONARIO" />
+            <End Role="NOV_UNIDADES_TRASLADOS" EntitySet="NOV_UNIDADES_TRASLADOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OBSERVACI__FUNCI__38996AB5" Association="Self.FK__OBSERVACI__FUNCI__38996AB5">
+            <End Role="FUNCIONARIO_NOVEDAD" EntitySet="FUNCIONARIO_NOVEDAD" />
+            <End Role="OBSERVACION_FUNCIONARIO" EntitySet="OBSERVACION_FUNCIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OBSERVACI__PROYE__3B75D760" Association="Self.FK__OBSERVACI__PROYE__3B75D760">
+            <End Role="PROYECTO_NOVEDAD" EntitySet="PROYECTO_NOVEDAD" />
+            <End Role="OBSERVACION_PROYECTO" EntitySet="OBSERVACION_PROYECTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROYECTO___FUNCI__398D8EEE" Association="Self.FK__PROYECTO___FUNCI__398D8EEE">
+            <End Role="FUNCIONARIO_NOVEDAD" EntitySet="FUNCIONARIO_NOVEDAD" />
+            <End Role="PROYECTO_FUNCIONARIO" EntitySet="PROYECTO_FUNCIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROYECTO___PROYE__3A81B327" Association="Self.FK__PROYECTO___PROYE__3A81B327">
+            <End Role="PROYECTO_NOVEDAD" EntitySet="PROYECTO_NOVEDAD" />
+            <End Role="PROYECTO_FUNCIONARIO" EntitySet="PROYECTO_FUNCIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROYECTO_FUNCIONARIO_PROYECTO_FUNCIONARIO" Association="Self.FK_PROYECTO_FUNCIONARIO_PROYECTO_FUNCIONARIO">
+            <End Role="PROYECTO_FUNCIONARIO" EntitySet="PROYECTO_FUNCIONARIO" />
+            <End Role="PROYECTO_FUNCIONARIO1" EntitySet="PROYECTO_FUNCIONARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="URS_REHUModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FUNCIONARIO_NOVEDAD">
+          <Key>
+            <PropertyRef Name="FUNCIONARIO_NOVEDAD_ID" />
+          </Key>
+          <Property Name="FUNCIONARIO_NOVEDAD_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDENTIFICACION__IDENTIFICACION__IDENTIFICACION_" Type="Int32" Nullable="false" />
+          <Property Name="CONSECUTIVO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OBSERVACION_FUNCIONARIO" Relationship="Self.FK__OBSERVACI__FUNCI__38996AB5" FromRole="FUNCIONARIO_NOVEDAD" ToRole="OBSERVACION_FUNCIONARIO" />
+          <NavigationProperty Name="PROYECTO_FUNCIONARIO" Relationship="Self.FK__PROYECTO___FUNCI__398D8EEE" FromRole="FUNCIONARIO_NOVEDAD" ToRole="PROYECTO_FUNCIONARIO" />
+        </EntityType>
+        <EntityType Name="NOV_UNIDADES_TRASLADOS">
+          <Key>
+            <PropertyRef Name="ID_UNIDAD_TRASLADO" />
+          </Key>
+          <Property Name="ID_UNIDAD_TRASLADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROYECTO_FUNCIONARIO_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PROYECTO_FUNCIONARIO" Relationship="Self.FK__NOV_UNIDA__PROYE__3C69FB99" FromRole="NOV_UNIDADES_TRASLADOS" ToRole="PROYECTO_FUNCIONARIO" />
+        </EntityType>
+        <EntityType Name="OBSERVACION_FUNCIONARIO">
+          <Key>
+            <PropertyRef Name="OBSERVACION_FUNCIONARIO_ID" />
+          </Key>
+          <Property Name="OBSERVACION_FUNCIONARIO_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FUNCIONARIO_NOVEDAD_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OBSERVACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FUNCIONARIO_NOVEDAD" Relationship="Self.FK__OBSERVACI__FUNCI__38996AB5" FromRole="OBSERVACION_FUNCIONARIO" ToRole="FUNCIONARIO_NOVEDAD" />
+        </EntityType>
+        <EntityType Name="PROYECTO_FUNCIONARIO">
+          <Key>
+            <PropertyRef Name="PROYECTO_FUNCIONARIO_ID" />
+          </Key>
+          <Property Name="PROYECTO_FUNCIONARIO_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROYECTO_NOVEDAD_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FUNCIONARIO_NOVEDAD_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_CLASE_NOVEDAD" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FUNCIONARIO_NOVEDAD" Relationship="Self.FK__PROYECTO___FUNCI__398D8EEE" FromRole="PROYECTO_FUNCIONARIO" ToRole="FUNCIONARIO_NOVEDAD" />
+          <NavigationProperty Name="NOV_UNIDADES_TRASLADOS" Relationship="Self.FK__NOV_UNIDA__PROYE__3C69FB99" FromRole="PROYECTO_FUNCIONARIO" ToRole="NOV_UNIDADES_TRASLADOS" />
+          <NavigationProperty Name="PROYECTO_NOVEDAD" Relationship="Self.FK__PROYECTO___PROYE__3A81B327" FromRole="PROYECTO_FUNCIONARIO" ToRole="PROYECTO_NOVEDAD" />
+          <NavigationProperty Name="PROYECTO_FUNCIONARIO1" Relationship="Self.FK_PROYECTO_FUNCIONARIO_PROYECTO_FUNCIONARIO" FromRole="PROYECTO_FUNCIONARIO" ToRole="PROYECTO_FUNCIONARIO1" />
+          <NavigationProperty Name="PROYECTO_FUNCIONARIO2" Relationship="Self.FK_PROYECTO_FUNCIONARIO_PROYECTO_FUNCIONARIO" FromRole="PROYECTO_FUNCIONARIO1" ToRole="PROYECTO_FUNCIONARIO" />
+        </EntityType>
+        <EntityType Name="PROYECTO_NOVEDAD">
+          <Key>
+            <PropertyRef Name="PROYECTO_NOVEDAD_ID" />
+          </Key>
+          <Property Name="PROYECTO_NOVEDAD_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUMERO_PROYECTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PROYECTO_FUNCIONARIO" Relationship="Self.FK__PROYECTO___PROYE__3A81B327" FromRole="PROYECTO_NOVEDAD" ToRole="PROYECTO_FUNCIONARIO" />
+          <NavigationProperty Name="OBSERVACION_PROYECTO" Relationship="Self.FK__OBSERVACI__PROYE__3B75D760" FromRole="PROYECTO_NOVEDAD" ToRole="OBSERVACION_PROYECTO" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="OBSERVACION_PROYECTO">
+          <Key>
+            <PropertyRef Name="OBSERVACION_PROYECTO_ID" />
+            <PropertyRef Name="PROYECTO_NOVEDAD_ID" />
+          </Key>
+          <Property Name="OBSERVACION_PROYECTO_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROYECTO_NOVEDAD_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OBSERVACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PROYECTO_NOVEDAD" Relationship="Self.FK__OBSERVACI__PROYE__3B75D760" FromRole="OBSERVACION_PROYECTO" ToRole="PROYECTO_NOVEDAD" />
+        </EntityType>
+        <Association Name="FK__OBSERVACI__FUNCI__38996AB5">
+          <End Role="FUNCIONARIO_NOVEDAD" Type="Self.FUNCIONARIO_NOVEDAD" Multiplicity="1" />
+          <End Role="OBSERVACION_FUNCIONARIO" Type="Self.OBSERVACION_FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FUNCIONARIO_NOVEDAD">
+              <PropertyRef Name="FUNCIONARIO_NOVEDAD_ID" />
+            </Principal>
+            <Dependent Role="OBSERVACION_FUNCIONARIO">
+              <PropertyRef Name="FUNCIONARIO_NOVEDAD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROYECTO___FUNCI__398D8EEE">
+          <End Role="FUNCIONARIO_NOVEDAD" Type="Self.FUNCIONARIO_NOVEDAD" Multiplicity="1" />
+          <End Role="PROYECTO_FUNCIONARIO" Type="Self.PROYECTO_FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FUNCIONARIO_NOVEDAD">
+              <PropertyRef Name="FUNCIONARIO_NOVEDAD_ID" />
+            </Principal>
+            <Dependent Role="PROYECTO_FUNCIONARIO">
+              <PropertyRef Name="FUNCIONARIO_NOVEDAD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NOV_UNIDA__PROYE__3C69FB99">
+          <End Role="PROYECTO_FUNCIONARIO" Type="Self.PROYECTO_FUNCIONARIO" Multiplicity="1" />
+          <End Role="NOV_UNIDADES_TRASLADOS" Type="Self.NOV_UNIDADES_TRASLADOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROYECTO_FUNCIONARIO">
+              <PropertyRef Name="PROYECTO_FUNCIONARIO_ID" />
+            </Principal>
+            <Dependent Role="NOV_UNIDADES_TRASLADOS">
+              <PropertyRef Name="PROYECTO_FUNCIONARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROYECTO___PROYE__3A81B327">
+          <End Role="PROYECTO_NOVEDAD" Type="Self.PROYECTO_NOVEDAD" Multiplicity="1" />
+          <End Role="PROYECTO_FUNCIONARIO" Type="Self.PROYECTO_FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROYECTO_NOVEDAD">
+              <PropertyRef Name="PROYECTO_NOVEDAD_ID" />
+            </Principal>
+            <Dependent Role="PROYECTO_FUNCIONARIO">
+              <PropertyRef Name="PROYECTO_NOVEDAD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROYECTO_FUNCIONARIO_PROYECTO_FUNCIONARIO">
+          <End Role="PROYECTO_FUNCIONARIO" Type="Self.PROYECTO_FUNCIONARIO" Multiplicity="1" />
+          <End Role="PROYECTO_FUNCIONARIO1" Type="Self.PROYECTO_FUNCIONARIO" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PROYECTO_FUNCIONARIO">
+              <PropertyRef Name="PROYECTO_FUNCIONARIO_ID" />
+            </Principal>
+            <Dependent Role="PROYECTO_FUNCIONARIO1">
+              <PropertyRef Name="PROYECTO_FUNCIONARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OBSERVACI__PROYE__3B75D760">
+          <End Role="PROYECTO_NOVEDAD" Type="Self.PROYECTO_NOVEDAD" Multiplicity="1" />
+          <End Role="OBSERVACION_PROYECTO" Type="Self.OBSERVACION_PROYECTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROYECTO_NOVEDAD">
+              <PropertyRef Name="PROYECTO_NOVEDAD_ID" />
+            </Principal>
+            <Dependent Role="OBSERVACION_PROYECTO">
+              <PropertyRef Name="PROYECTO_NOVEDAD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="URS_REHUEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FUNCIONARIO_NOVEDAD" EntityType="Self.FUNCIONARIO_NOVEDAD" />
+          <EntitySet Name="NOV_UNIDADES_TRASLADOS" EntityType="Self.NOV_UNIDADES_TRASLADOS" />
+          <EntitySet Name="OBSERVACION_FUNCIONARIO" EntityType="Self.OBSERVACION_FUNCIONARIO" />
+          <EntitySet Name="PROYECTO_FUNCIONARIO" EntityType="Self.PROYECTO_FUNCIONARIO" />
+          <EntitySet Name="PROYECTO_NOVEDAD" EntityType="Self.PROYECTO_NOVEDAD" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="OBSERVACION_PROYECTO" EntityType="Self.OBSERVACION_PROYECTO" />
+          <AssociationSet Name="FK__OBSERVACI__FUNCI__38996AB5" Association="Self.FK__OBSERVACI__FUNCI__38996AB5">
+            <End Role="FUNCIONARIO_NOVEDAD" EntitySet="FUNCIONARIO_NOVEDAD" />
+            <End Role="OBSERVACION_FUNCIONARIO" EntitySet="OBSERVACION_FUNCIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROYECTO___FUNCI__398D8EEE" Association="Self.FK__PROYECTO___FUNCI__398D8EEE">
+            <End Role="FUNCIONARIO_NOVEDAD" EntitySet="FUNCIONARIO_NOVEDAD" />
+            <End Role="PROYECTO_FUNCIONARIO" EntitySet="PROYECTO_FUNCIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NOV_UNIDA__PROYE__3C69FB99" Association="Self.FK__NOV_UNIDA__PROYE__3C69FB99">
+            <End Role="PROYECTO_FUNCIONARIO" EntitySet="PROYECTO_FUNCIONARIO" />
+            <End Role="NOV_UNIDADES_TRASLADOS" EntitySet="NOV_UNIDADES_TRASLADOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROYECTO___PROYE__3A81B327" Association="Self.FK__PROYECTO___PROYE__3A81B327">
+            <End Role="PROYECTO_NOVEDAD" EntitySet="PROYECTO_NOVEDAD" />
+            <End Role="PROYECTO_FUNCIONARIO" EntitySet="PROYECTO_FUNCIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROYECTO_FUNCIONARIO_PROYECTO_FUNCIONARIO" Association="Self.FK_PROYECTO_FUNCIONARIO_PROYECTO_FUNCIONARIO">
+            <End Role="PROYECTO_FUNCIONARIO" EntitySet="PROYECTO_FUNCIONARIO" />
+            <End Role="PROYECTO_FUNCIONARIO1" EntitySet="PROYECTO_FUNCIONARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OBSERVACI__PROYE__3B75D760" Association="Self.FK__OBSERVACI__PROYE__3B75D760">
+            <End Role="PROYECTO_NOVEDAD" EntitySet="PROYECTO_NOVEDAD" />
+            <End Role="OBSERVACION_PROYECTO" EntitySet="OBSERVACION_PROYECTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="URS_REHUModelStoreContainer" CdmEntityContainer="URS_REHUEntities">
+          <EntitySetMapping Name="FUNCIONARIO_NOVEDAD">
+            <EntityTypeMapping TypeName="URS_REHUModel.FUNCIONARIO_NOVEDAD">
+              <MappingFragment StoreEntitySet="FUNCIONARIO_NOVEDAD">
+                <ScalarProperty Name="FUNCIONARIO_NOVEDAD_ID" ColumnName="FUNCIONARIO_NOVEDAD_ID" />
+                <ScalarProperty Name="IDENTIFICACION__IDENTIFICACION__IDENTIFICACION_" ColumnName="IDENTIFICACION&#xD;&#xA;IDENTIFICACION&#xD;&#xA;IDENTIFICACION]" />
+                <ScalarProperty Name="CONSECUTIVO" ColumnName="CONSECUTIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOV_UNIDADES_TRASLADOS">
+            <EntityTypeMapping TypeName="URS_REHUModel.NOV_UNIDADES_TRASLADOS">
+              <MappingFragment StoreEntitySet="NOV_UNIDADES_TRASLADOS">
+                <ScalarProperty Name="ID_UNIDAD_TRASLADO" ColumnName="ID_UNIDAD_TRASLADO" />
+                <ScalarProperty Name="PROYECTO_FUNCIONARIO_ID" ColumnName="PROYECTO_FUNCIONARIO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OBSERVACION_FUNCIONARIO">
+            <EntityTypeMapping TypeName="URS_REHUModel.OBSERVACION_FUNCIONARIO">
+              <MappingFragment StoreEntitySet="OBSERVACION_FUNCIONARIO">
+                <ScalarProperty Name="OBSERVACION_FUNCIONARIO_ID" ColumnName="OBSERVACION_FUNCIONARIO_ID" />
+                <ScalarProperty Name="FUNCIONARIO_NOVEDAD_ID" ColumnName="FUNCIONARIO_NOVEDAD_ID" />
+                <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROYECTO_FUNCIONARIO">
+            <EntityTypeMapping TypeName="URS_REHUModel.PROYECTO_FUNCIONARIO">
+              <MappingFragment StoreEntitySet="PROYECTO_FUNCIONARIO">
+                <ScalarProperty Name="PROYECTO_FUNCIONARIO_ID" ColumnName="PROYECTO_FUNCIONARIO_ID" />
+                <ScalarProperty Name="PROYECTO_NOVEDAD_ID" ColumnName="PROYECTO_NOVEDAD_ID" />
+                <ScalarProperty Name="FUNCIONARIO_NOVEDAD_ID" ColumnName="FUNCIONARIO_NOVEDAD_ID" />
+                <ScalarProperty Name="ID_CLASE_NOVEDAD" ColumnName="ID_CLASE_NOVEDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROYECTO_NOVEDAD">
+            <EntityTypeMapping TypeName="URS_REHUModel.PROYECTO_NOVEDAD">
+              <MappingFragment StoreEntitySet="PROYECTO_NOVEDAD">
+                <ScalarProperty Name="PROYECTO_NOVEDAD_ID" ColumnName="PROYECTO_NOVEDAD_ID" />
+                <ScalarProperty Name="NUMERO_PROYECTO" ColumnName="NUMERO_PROYECTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="URS_REHUModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OBSERVACION_PROYECTO">
+            <EntityTypeMapping TypeName="URS_REHUModel.OBSERVACION_PROYECTO">
+              <MappingFragment StoreEntitySet="OBSERVACION_PROYECTO">
+                <ScalarProperty Name="OBSERVACION_PROYECTO_ID" ColumnName="OBSERVACION_PROYECTO_ID" />
+                <ScalarProperty Name="PROYECTO_NOVEDAD_ID" ColumnName="PROYECTO_NOVEDAD_ID" />
+                <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

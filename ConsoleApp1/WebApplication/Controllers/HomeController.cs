@@ -25,8 +25,9 @@ namespace WebApplication.Controllers
             var nulo = string.IsNullOrEmpty(data) ? "es vacía" : "llena";
 
             //JSON CON Newtonsoft.Json;
-            Json(JsonConvert.SerializeObject(new { Mensaje = "Hola Devs" })); // en la vista recibe respuesta // var response = JSON.parse(respuesta); // response.Mensaje
+            JsonConvert.SerializeObject(new { Mensaje = "Hola Devs" }); // en la vista recibe respuesta // var response = JSON.parse(respuesta); // response.Mensaje
             Json(new { Mensaje = "Hola Devs" });
+            Json(data); // lo convierte a json
             Json(data, JsonRequestBehavior.AllowGet); //permite ajax get
             //con redirect
             Json(new { ok = true, toRedirect = Url.Action("Index") }, JsonRequestBehavior.AllowGet);
